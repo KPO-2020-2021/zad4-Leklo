@@ -14,82 +14,36 @@
 
 #include "exampleConfig.h"
 #include "example.h"
-#include "vector.hh"
-#include "matrix.hh"
+#include "vector3D.hh"
+#include "matrix3x3.hh"
+#include "cuboid.hh"
 #include "../inc/lacze_do_gnuplota.hh"
 
-/*!
- * Simple main program that demontrates how access
- * CMake definitions (here the version number) from source code.
- * 
- * EDIT: dodane kreowanie wektorow i macierzy plus obsluga lacza do gnuplota
- */
 
-#define DL_KROTKI_BOK  100
-#define DL_DLUGI_BOK   150
-
-/*!
- * Przyklad zapisu wspolrzednych zbioru punktow do strumienia wyjściowego.
- * Dane sa odpowiednio sformatowane, tzn. przyjęto notację stałoprzecinkową
- * z dokładnością do 10 miejsca po przecinku. Szerokość wyświetlanego pola 
- * to 16 miejsc, sposób wyrównywania - do prawej strony.
- * \param[in] StrmWy - strumien wyjsciowy, do ktorego maja zostac zapisane
- *                     kolejne wspolrzedne.
- * \param[in] Przesuniecie - ten parameter jest tylko po to, aby pokazać
- *                          mozliwosc zmiany wspolrzednych i prostokata
- *                          i zmiane jego polorzenia na okienku graficznym
- *                         rysownym przez gnuplota.
- * \retval true - gdy operacja zapisu powiodła się,
- * \retval false - w przypadku przeciwnym.
- */
-void PrzykladZapisuWspolrzednychDoStrumienia( std::ostream&     StrmWy, 
-                                              double       Przesuniecie
-                                            )
+void zapiswspldostru(std::ostream& out, Cuboid C)
 {
-   //---------------------------------------------------------------
-   // To tylko przyklad !!!
-   // W programie nalezy uzywać pojęcia wektora, a nie oddzielnych 
-   // zmiennych do reprezentowania wspolrzednych!
-   //
-  double  x1, y1, x2, y2, x3, y3, x4, y4; 
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[0][0]<< std::setw(16) << C[0][1] << std::setw(16) << C[0][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[1][0]<< std::setw(16) << C[1][1] << std::setw(16) << C[1][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[2][0]<< std::setw(16) << C[2][1] << std::setw(16) << C[2][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[3][0]<< std::setw(16) << C[3][1] << std::setw(16) << C[3][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[0][0]<< std::setw(16) << C[0][1] << std::setw(16) << C[0][2] << std::endl;
 
-  x1 = y1 = 10;
-  x2 = x1 + DL_DLUGI_BOK;  y2 = y1;
-  x3 = x2;  y3 = y2 + DL_KROTKI_BOK;
-  x4 = x3 - DL_DLUGI_BOK; y4 = y3;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[4][0]<< std::setw(16) << C[4][1] << std::setw(16) << C[4][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[5][0]<< std::setw(16) << C[5][1] << std::setw(16) << C[5][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[1][0]<< std::setw(16) << C[1][1] << std::setw(16) << C[1][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[5][0]<< std::setw(16) << C[5][1] << std::setw(16) << C[5][2] << std::endl;
 
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[6][0]<< std::setw(16) << C[6][1] << std::setw(16) << C[6][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[2][0]<< std::setw(16) << C[2][1] << std::setw(16) << C[2][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[6][0]<< std::setw(16) << C[6][1] << std::setw(16) << C[6][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[7][0]<< std::setw(16) << C[7][1] << std::setw(16) << C[7][2] << std::endl;
 
-  StrmWy << std::setw(16) << std::fixed << std::setprecision(10) << x1+Przesuniecie 
-         << std::setw(16) << std::fixed << std::setprecision(10) << y1+Przesuniecie << std::endl;
-  StrmWy << std::setw(16) << std::fixed << std::setprecision(10) << x2+Przesuniecie 
-         << std::setw(16) << std::fixed << std::setprecision(10) << y2+Przesuniecie << std::endl;
-  StrmWy << std::setw(16) << std::fixed << std::setprecision(10) << x3+Przesuniecie 
-         << std::setw(16) << std::fixed << std::setprecision(10) << y3+Przesuniecie << std::endl;
-  StrmWy << std::setw(16) << std::fixed << std::setprecision(10) << x4+Przesuniecie 
-         << std::setw(16) << std::fixed << std::setprecision(10) << y4+Przesuniecie << std::endl;
-  StrmWy << std::setw(16) << std::fixed << std::setprecision(10) << x1+Przesuniecie 
-         << std::setw(16) << std::fixed << std::setprecision(10) << y1+Przesuniecie << std::endl; 
-                             // Jeszcze raz zapisujemy pierwszy punkt,
-                             // aby gnuplot narysowal zamkniętą linię.
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[3][0]<< std::setw(16) << C[3][1] << std::setw(16) << C[3][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[7][0]<< std::setw(16) << C[7][1] << std::setw(16) << C[7][2] << std::endl;
+       out << std::setw(16) << std::fixed << std::setprecision(10) << C[4][0]<< std::setw(16) << C[4][1] << std::setw(16) << C[4][2] << std::endl;
 }
 
-
-
-/*!
- * Przyklad zapisu wspolrzednych zbioru punktow do pliku, z ktorego
- * dane odczyta program gnuplot i narysuje je w swoim oknie graficznym.
- * \param[in] sNazwaPliku - nazwa pliku, do którego zostana zapisane
- *                          wspolrzędne punktów.
- * \param[in] Przesuniecie - ten parameter jest tylko po to, aby pokazać
- *                          mozliwosc zmiany wspolrzednych i prostokata
- *                          i zmiane jego polorzenia na okienku graficznym
- *                         rysownym przez gnuplota.
- * \retval true - gdy operacja zapisu powiodła się,
- * \retval false - w przypadku przeciwnym.
- */
-bool PrzykladZapisuWspolrzednychDoPliku( const char  *sNazwaPliku,
-                                         double       Przesuniecie
-                                       )
+bool ZapisWspolrzednychDoPliku( const char  *sNazwaPliku, Cuboid C)
 {
   std::ofstream  StrmPlikowy;
 
@@ -100,14 +54,14 @@ bool PrzykladZapisuWspolrzednychDoPliku( const char  *sNazwaPliku,
     return false;
   }
 
-  PrzykladZapisuWspolrzednychDoStrumienia(StrmPlikowy, Przesuniecie);
+  zapiswspldostru(StrmPlikowy, C);
 
   StrmPlikowy.close();
   return !StrmPlikowy.fail();
 }
 
 int main() {
-  std::cout << "Project Rotation 2D based on C++ Boiler Plate v"
+  std::cout << "Project Rotation 3D based on C++ Boiler Plate v"
             << PROJECT_VERSION_MAJOR /*duże zmiany, najczęściej brak kompatybilności wstecz */
             << "."
             << PROJECT_VERSION_MINOR /* istotne zmiany */
@@ -118,20 +72,17 @@ int main() {
             << std::endl;
   // std::system("cat ../LICENSE");
   // do zadania Rotacja 2D
-  std::cout << "Vector:" << std::endl;
-  Vector tmpV1 = Vector();
-  std::cout << "Vector - konstruktor bezparametryczny:\n" << tmpV1 << std::endl;
-  double argumentsV[] = {1.0, 2.0};
-  Vector tmpV2 = Vector(argumentsV);
-  std::cout << "Vector - konstruktor parametryczny:\n" << tmpV2 << std::endl;
-
-  std::cout << "Matrix:" << std::endl;
-  Matrix tmpM1 = Matrix();
-  std::cout << "Matrix - konstruktor bezparametryczny:\n" << tmpM1 << std::endl;
-  double argumentsM[][SIZE] = {{1.0, 2.0},{3.0, 4.0}};
-  Matrix tmpM2 = Matrix(argumentsM);
-  std::cout << "Matrix - konstruktor parametryczny:\n" << tmpM2 << std::endl;
-
+  
+double a1[3] {20.0, 100.0, 30.0};double a2[3] {20.0, 160.0, 30.0};
+double a3[3] {140.0, 160.0, 30.0};double a4[3] {140.0, 100.0, 30.0};
+double a5[3] {20.0, 100, 110};double a6[3] {20, 160, 110};
+double a7[3] {140, 160, 110};double a8[3] {140, 100, 110};
+Vector3D arr[8]; Matrix3x3 M;
+  Vector3D v1(a1); Vector3D v2(a2); Vector3D v3(a3); Vector3D v4(a4);
+  Vector3D v5(a5); Vector3D v6(a6); Vector3D v7(a7); Vector3D v8(a8);
+  arr[0] = v1; arr[1] = v2; arr[2] = v3; arr[3] = v4; arr[4] = v5;
+  arr[5] = v6; arr[6] = v7; arr[7] = v8;
+  Cuboid C(arr);
     PzG::LaczeDoGNUPlota  Lacze;  // Ta zmienna jest potrzebna do wizualizacji
                                 // rysunku prostokata
 
@@ -146,31 +97,115 @@ int main() {
    //   2. Rysowane jako zbior punktow reprezentowanych przez kwadraty,
    //      których połowa długości boku wynosi 2.
    //
-  Lacze.DodajNazwePliku("../datasets/prostokat.dat",PzG::RR_Punktowy,2);
-   //
-   //  Ustawienie trybu rysowania 2D, tzn. rysowany zbiór punktów
-   //  znajduje się na wspólnej płaszczyźnie. Z tego powodu powoduj
-   //  jako wspolrzedne punktow podajemy tylko x,y.
-   //
-  Lacze.ZmienTrybRys(PzG::TR_2D);
+  Lacze.DodajNazwePliku("../datasets/prostokat.dat",PzG::RR_Punktowy,3);
 
-  PrzykladZapisuWspolrzednychDoStrumienia(std::cout,0);
-  if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat",0)) return 1;
-  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-  std::cin.ignore(100000,'\n');
-   //----------------------------------------------------------
-   // Ponownie wypisuje wspolrzedne i rysuje prostokąt w innym miejscu.
-   //
-  PrzykladZapisuWspolrzednychDoStrumienia(std::cout,50);
-  if (!PrzykladZapisuWspolrzednychDoPliku("../datasets/prostokat.dat",50)) return 1;
-  Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
-  std::cin.ignore(100000,'\n');
+  Lacze.ZmienTrybRys(PzG::TR_3D);
 
-  // Z bazy projektu-wydmuszki Boiler Plate C++:
-  // Bring in the dummy class from the example source,
-  // just to show that it is accessible from main.cpp.
-  Dummy d = Dummy();
-  return d.doSomething() ? 0 : -1;
+if(!ZapisWspolrzednychDoPliku("../datasets/prostokat.dat", C)) return 1;
+  Lacze.Rysuj();
+  std::cout << "Nacisnij ENTER aby kontynuowac" << std::endl;
+  std::cin.ignore(10000, '\n');
+
+std::cout << "o - obrot prostokata o zadany kat" << std::endl;
+std::cout << "t - powtorzenie poprzedniego obrotu" << std::endl;
+std::cout << "r - wyswietlenie macierzy rotacji" << std::endl;
+std::cout << "p - przesuniecie prostokata o zadany wektor" << std::endl;
+std::cout << "w - wyswietlenie wspolrzednych wierzcholkow" << std::endl;
+std::cout << "s - sprawdzenie dlugosci przeciwleglych bokow" << std::endl;
+std::cout << "m - wyswietl menu" << std::endl;
+std::cout << "k - koniec dzialania programu" << std::endl;
+  do
+  {
+    char op;
+    std::cin >> op;
+    switch (op)
+    {
+    case 'o':{
+      std::cout << "Twoj wybor? (m - menu) > o" << std::endl;
+       double degrarr[100]; char axis; double degr; std::string str;
+      std::cout << "Podaj sekwencje oznaczen osi oraz katy obrotu w stopniach" << std::endl;
+      long unsigned int repetition = 0;do
+      {      
+             
+             std::cin >> axis;
+             if(axis == '.'){break;}
+             std::cin >> degrarr[repetition];
+             if(axis != 'x' && axis != 'y' && axis != 'z')
+             {
+                    std::cout << "Bledne oznaczenie osi. Dopuszczalne znaki to: x y z .\n Sprobuj jeszcze raz." << std::endl;
+                    std::cin >> axis; std::cin >> degrarr[repetition];
+             }
+             str += axis;
+      }while(axis != '.');
+      std::cout << std::endl << "Ile razy operacja obrotu ma byc powtorzona?" << std::endl;
+      int re;
+      std::cin >> re; std::cout << std::endl;
+      for(int j = 0; j < re; ++j)
+      {      
+            for(long unsigned int i = 0; i < str.length(); ++i)
+            { 
+            axis = str[i]; degr = degrarr[i];
+            Matrix3x3 m(axis, degr);
+            M = m;
+            C = C.rotation(M);
+            }
+      }
+      
+      C.sides();
+
+      if(!ZapisWspolrzednychDoPliku("../datasets/prostokat.dat", C)) return 1;
+      Lacze.Rysuj();
+      std::cout << "Nacisnij ENTER aby kontynuowac" << std::endl;
+      std::cin.ignore(10000, '\n');
+      break;}
+    case 't':{
+            std::cout << "Twoj wybor? (r - menu) > r" << std::endl;
+            C = C.rotation(M);
+            if(!ZapisWspolrzednychDoPliku("../datasets/prostokat.dat", C)) return 1;
+            Lacze.Rysuj();
+            std::cout << "Nacisnij ENTER aby kontynuowac" << std::endl;
+            std::cin.ignore(10000, '\n');
+
+      break;}
+    case 'r':{
+           std::cout << "Twoj wybor? (r - menu) > r" << std::endl;
+           std::cout << M;
+      break;}
+    case 'p':{
+      std::cout << "Twoj wybor? (m - menu) > p" << std::endl 
+      << "Wprowadz wspolrzedne wektora translacji w postaci dwoch liczb tzn. wspolrzednej x, y oraz z." << std::endl;
+      double tmp[3];
+      std::cin >> tmp[0]; std::cin >> tmp[1]; std::cin >> tmp[2]; std::cout << std::endl;
+      Vector3D V(tmp);
+      C = C.translation( V);
+      if(!ZapisWspolrzednychDoPliku("../datasets/prostokat.dat", C)) return 1;
+      Lacze.Rysuj();
+      std::cout << "Nacisnij ENTER aby kontynuowac" << std::endl;
+      std::cin.ignore(10000, '\n');
+      break;}
+    case 'w':{
+      std::cout << "Twoj wybor? (m - menu) > w" << std::endl;
+      std::cout << C;
+      break;}
+    case 's':{
+           C.sides();
+      break;}
+    case 'm':{
+       std::cout << "o - obrot prostokata o zadany kat" << std::endl;
+       std::cout << "t - powtorzenie poprzedniego obrotu" << std::endl;
+       std::cout << "r - wyswietlenie macierzy rotacji" << std::endl;
+       std::cout << "p - przesuniecie prostokata o zadany wektor" << std::endl;
+       std::cout << "w - wyswietlenie wspolrzednych wierzcholkow" << std::endl;
+       std::cout << "s - sprawdzenie dlugosci przeciwleglych bokow" << std::endl;
+       std::cout << "m - wyswietl menu" << std::endl;
+       std::cout << "k - koniec dzialania programu" << std::endl;
+      break;}
+    case 'k':{
+      return 0;
+      break;}
+    default:{
+      break;}
+    }
+  }while(1);
 }
+

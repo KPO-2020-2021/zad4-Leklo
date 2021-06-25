@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/leklo/ProgObiekt/zad4-Leklo/build",
+  "command": "/usr/bin/c++  -DENABLE_DOCTEST_IN_LIBRARY -I/home/leklo/ProgObiekt/zad4-Leklo/build -I/home/leklo/ProgObiekt/zad4-Leklo/inc -I/home/leklo/ProgObiekt/zad4-Leklo/external/doctest/doctest  -g   -Wall -Wextra -Wpedantic -Wno-switch-enum -Werror -std=c++17 -o CMakeFiles/main.dir/app/main.cpp.o -c /home/leklo/ProgObiekt/zad4-Leklo/app/main.cpp",
+  "file": "/home/leklo/ProgObiekt/zad4-Leklo/app/main.cpp"
+},
+{
+  "directory": "/home/leklo/ProgObiekt/zad4-Leklo/build",
+  "command": "/usr/bin/c++  -DENABLE_DOCTEST_IN_LIBRARY -I/home/leklo/ProgObiekt/zad4-Leklo/build -I/home/leklo/ProgObiekt/zad4-Leklo/inc -I/home/leklo/ProgObiekt/zad4-Leklo/external/doctest/doctest  -g   -Wall -Wextra -Wpedantic -Wno-switch-enum -Werror -std=c++17 -o CMakeFiles/program.dir/src/example.cpp.o -c /home/leklo/ProgObiekt/zad4-Leklo/src/example.cpp",
+  "file": "/home/leklo/ProgObiekt/zad4-Leklo/src/example.cpp"
+},
+{
+  "directory": "/home/leklo/ProgObiekt/zad4-Leklo/build",
+  "command": "/usr/bin/c++  -DENABLE_DOCTEST_IN_LIBRARY -I/home/leklo/ProgObiekt/zad4-Leklo/build -I/home/leklo/ProgObiekt/zad4-Leklo/inc -I/home/leklo/ProgObiekt/zad4-Leklo/external/doctest/doctest  -g   -Wall -Wextra -Wpedantic -Wno-switch-enum -Werror -std=c++17 -o CMakeFiles/program.dir/src/lacze_do_gnuplota.cpp.o -c /home/leklo/ProgObiekt/zad4-Leklo/src/lacze_do_gnuplota.cpp",
+  "file": "/home/leklo/ProgObiekt/zad4-Leklo/src/lacze_do_gnuplota.cpp"
+},
+{
+  "directory": "/home/leklo/ProgObiekt/zad4-Leklo/build/tests",
+  "command": "/usr/bin/c++  -DENABLE_DOCTEST_IN_LIBRARY -I/home/leklo/ProgObiekt/zad4-Leklo/build -I/home/leklo/ProgObiekt/zad4-Leklo/inc -I/home/leklo/ProgObiekt/zad4-Leklo/external/doctest/doctest  -g   -Wall -Wextra -Wpedantic -Wno-switch-enum -Werror -std=c++17 -o CMakeFiles/unit_tests.dir/main.cpp.o -c /home/leklo/ProgObiekt/zad4-Leklo/tests/main.cpp",
+  "file": "/home/leklo/ProgObiekt/zad4-Leklo/tests/main.cpp"
+},
+{
+  "directory": "/home/leklo/ProgObiekt/zad4-Leklo/build/tests",
+  "command": "/usr/bin/c++  -DENABLE_DOCTEST_IN_LIBRARY -I/home/leklo/ProgObiekt/zad4-Leklo/build -I/home/leklo/ProgObiekt/zad4-Leklo/inc -I/home/leklo/ProgObiekt/zad4-Leklo/external/doctest/doctest  -g   -Wall -Wextra -Wpedantic -Wno-switch-enum -Werror -std=c++17 -o CMakeFiles/unit_tests.dir/dummy.cpp.o -c /home/leklo/ProgObiekt/zad4-Leklo/tests/dummy.cpp",
+  "file": "/home/leklo/ProgObiekt/zad4-Leklo/tests/dummy.cpp"
+}
+]
